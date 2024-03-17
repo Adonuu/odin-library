@@ -3,7 +3,9 @@ body {
     padding: 0;
     height: 100vh;
     display: grid;
-    grid-template-rows: 1fr 10fr;
+    grid-template-rows: 1fr 15fr;
+    background-color: darkgray;
+    font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
     grid-template-areas: 
                             'topBar'
                             'libraryContainer';
@@ -20,7 +22,6 @@ body {
     grid-area: libraryContainer;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    background-color: darkgray;
 }
 
 .book {
@@ -32,11 +33,18 @@ body {
     margin: 5px;
     border-radius: 7px;
     height: 25%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+.book > * {
+    padding: 10px;
 }
 
 #title {
     color: white;
-    font-size: 3rem;
+    font-size: 2rem;
     padding: 10px;
     font-weight: bold;
 }
@@ -46,7 +54,7 @@ body {
     background-color: darkolivegreen;
     color: white;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1rem;
     border-radius: 10px;
 }
 

@@ -10,14 +10,6 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-
-    this.info = () => {
-        if (this.read) {
-            return this.title + " by " + this.author + ", " + this.pages + " pages, read this book";
-        } else {
-            return this.title + " by " + this.author + ", " + this.pages + " pages, not read yet";
-        }
-    }
 }
 
 // getter functions for the Book prototype
@@ -42,15 +34,15 @@ Book.prototype.setTitle = function (title) {
     this.title = title;
 }
 
-Book.prototype.getAuthor = function (author) {
+Book.prototype.setAuthor = function (author) {
     this.author = author;
 }
 
-Book.prototype.getPages = function (pages) {
+Book.prototype.setPages = function (pages) {
     this.pages = pages;
 }
 
-Book.prototype.getRead = function (read) {
+Book.prototype.setRead = function (read) {
     this.read = read;
 }
 
@@ -62,16 +54,55 @@ function addBookToLibrary (book) {
 function displayLibrary () {
     myLibrary.forEach((item) => {
         // create element for each book
-        let newDiv = document.createElement('div');
-        // get the books information for display on the node
-        let bookInfo = document.createTextNode(item.info());
-        // append the book info to the new element
-        newDiv.appendChild(bookInfo);
+        let newDiv = bookDisplay(item);
         // add a class to the new element for styling
         newDiv.classList.add('book');
         // append element to libraryContainer
         libraryContainer.append(newDiv);
     })
+}
+
+// function to create a div for displaying a book's information
+function bookDisplay (book) {
+    // node to contain all information
+    let parentDiv = document.createElement('div');
+    // create node for title
+    let titleDiv = document.createElement('div');
+    // create text node for title
+    let titleInfo = document.createTextNode('Title: ' + book.getTitle());
+    // append text node to title node
+    titleDiv.appendChild(titleInfo);
+    // append titleDiv to parentDiv
+    parentDiv.appendChild(titleDiv);
+    // create node for author
+    let authorDiv = document.createElement('div');
+    // create text node for author
+    let authorInfo = document.createTextNode('Author: ' + book.getAuthor());
+    // append text node to author node
+    authorDiv.appendChild(authorInfo);
+    // append authorDiv to parentDiv
+    parentDiv.appendChild(authorDiv);
+    // create node for pages
+    let pagesDiv = document.createElement('div');
+    // create text node for pages
+    let pagesInfo = document.createTextNode('Number of Pages: ' + book.getPages());
+    // append text node to pages node
+    pagesDiv.appendChild(pagesInfo);
+    // append pagesDiv to parentDiv
+    parentDiv.appendChild(pagesDiv);
+
+    let readDiv = document.createElement('div');
+    // depending on if the book is read or not want to display different information
+    let readInfo;
+    if (book.getRead()) {
+        readInfo = document.createTextNode('Status: Read');
+    } else {
+        readInfo = document.createTextNode('Status: Not Read Yet');
+    }
+    readDiv.appendChild(readInfo);
+    parentDiv.appendChild(readDiv);
+
+    return parentDiv;
 }
 
 // create sample books
