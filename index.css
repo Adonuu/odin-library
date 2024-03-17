@@ -43,4 +43,13 @@ body {
 
 #addBook {
     margin: 10px;
+    background-color: darkolivegreen;
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    border-radius: 10px;
+}
+
+#addBook:hover {
+    background-color: darkslategray;
 }

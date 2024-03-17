@@ -20,6 +20,41 @@ function Book(title, author, pages, read) {
     }
 }
 
+// getter functions for the Book prototype
+Book.prototype.getTitle = function () {
+    return this.title;
+}
+
+Book.prototype.getAuthor = function () {
+    return this.author;
+}
+
+Book.prototype.getPages = function () {
+    return this.pages;
+}
+
+Book.prototype.getRead = function () {
+    return this.read;
+}
+
+// setter functions for the Book prototype
+Book.prototype.setTitle = function (title) {
+    this.title = title;
+}
+
+Book.prototype.getAuthor = function (author) {
+    this.author = author;
+}
+
+Book.prototype.getPages = function (pages) {
+    this.pages = pages;
+}
+
+Book.prototype.getRead = function (read) {
+    this.read = read;
+}
+
+
 function addBookToLibrary (book) {
     myLibrary.push(book);
 }
