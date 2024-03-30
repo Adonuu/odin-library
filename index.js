@@ -110,6 +110,11 @@ document.querySelector('#addBook').addEventListener('click', () => {
     document.querySelector('#BookEntry').showModal();
 });
 
+// event listener to close dialog when closeForm is clicked
+document.querySelector('#closeForm').addEventListener('click', () => {
+    document.querySelector('#BookEntry').close();
+})
+
 // create sample books
 let theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
 let FotR = new Book("Fellowship of the Ring", "J.R.R. Tolkien", 493, false);

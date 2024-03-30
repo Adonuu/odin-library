@@ -61,3 +61,47 @@ body {
 #addBook:hover {
     background-color: darkslategray;
 }
+
+#BookEntry {
+    border: none;
+    border-radius: 7px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+h2 {
+    width: 75%;
+    color: white;
+    margin-top: 12.5px;
+}
+
+#closeForm {
+    width: 25%;
+    text-align: right;
+    font-size: 2em;
+    margin-top: 0;
+    color: white;
+}
+
+#bookInformation {
+    width: 87.5%;
+    height: 10vh;
+    border-radius: 7px;
+}
+
+p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+dialog {
+    padding-right: 5px;
+    padding-top: 0;
+    width: 25%;
+    background-color: darkolivegreen;
+}
+
+dialog::backdrop {
+    opacity: 0.5;
+    background-color: black;
+}
