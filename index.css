@@ -65,21 +65,19 @@ body {
 #BookEntry {
     border: none;
     border-radius: 7px;
-    display: flex;
     flex-flow: row wrap;
 }
 
 h2 {
     width: 75%;
     color: white;
-    margin-top: 12.5px;
 }
 
 #closeForm {
     width: 25%;
     text-align: right;
     font-size: 2em;
-    margin-top: 0;
+    margin-top: 5px;
     color: white;
 }
 
@@ -95,13 +93,47 @@ p {
 }
 
 dialog {
-    padding-right: 5px;
-    padding-top: 0;
-    width: 25%;
+    width: 30%;
     background-color: darkolivegreen;
 }
 
 dialog::backdrop {
     opacity: 0.5;
     background-color: black;
+}
+
+#bookForm {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+fieldset {
+    width: 90%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+fieldset > div > label {
+    color: white;
+    width: 40%;
+    margin-right: 3px;
+}
+
+fieldset > div > input {
+    width: 60%;
+    margin-left: 5px;
+}
+
+fieldset > div {
+    width: 90%;
+    display: flex;
+    margin: 5px;
+}
+
+#submitBook {
+    width: 50%;
+    border-radius: 7px;
+    border: none;
 }
