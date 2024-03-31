@@ -46,9 +46,26 @@ Book.prototype.setRead = function (read) {
     this.read = read;
 }
 
+Book.prototype.toggleRead = function () {
+    if (this.read) {
+        this.read = false;
+    } else {
+        this.read = true;
+    }
+}
+
 
 function addBookToLibrary (book) {
     myLibrary.push(book);
+}
+
+function removeBookFromLibrary (book) {
+    // search my library for index to remove
+    myLibrary.forEach((item, index) => {
+        if (item.title === book.title && item.author === book.author) {
+            myLibrary.splice(index, 1);
+        }
+    })
 }
 
 function displayLibrary () {
@@ -66,6 +83,34 @@ function displayLibrary () {
 function bookDisplay (book) {
     // node to contain all information
     let parentDiv = document.createElement('div');
+    // add button for removing book
+    let buttonDiv = document.createElement('button');
+    // add class to button for styling
+    buttonDiv.classList.add('removeButton');
+    // add text to button
+    let buttonInfo = document.createTextNode('✕');
+    buttonDiv.appendChild(buttonInfo);
+    parentDiv.appendChild(buttonDiv);
+
+    // add function to button to remove book
+    buttonDiv.addEventListener('click', () => {
+
+        // get book information in order to remove book
+        let parentDiv = buttonDiv.parentElement;
+
+        let title = parentDiv.childNodes[1].textContent.split(':')[1].trim();
+        let author = parentDiv.childNodes[2].textContent.split(':')[1].trim();
+        let pages = parentDiv.childNodes[3].textContent.split(':')[1].trim();
+        let read = parentDiv.childNodes[4].textContent.split(':')[1].trim();
+
+        let bookToRemove = new Book(title, author, pages, read);
+
+        removeBookFromLibrary(bookToRemove);
+
+        // remove book from page display
+        parentDiv.remove();
+        
+    })
     // create node for title
     let titleDiv = document.createElement('div');
     // create text node for title
@@ -101,6 +146,36 @@ function bookDisplay (book) {
     }
     readDiv.appendChild(readInfo);
     parentDiv.appendChild(readDiv);
+
+    // add button for toggling read status
+    let buttonRead = document.createElement('button');
+    buttonRead.classList.add('readButton');
+    let buttonReadInfo = document.createTextNode('Toggle Read Status');
+    buttonRead.appendChild(buttonReadInfo);
+
+    buttonRead.addEventListener('click', () => {
+        // get book information in order to remove book
+        let parentDiv = buttonDiv.parentElement;
+
+        let title = parentDiv.childNodes[1].textContent.split(':')[1].trim();
+        let author = parentDiv.childNodes[2].textContent.split(':')[1].trim();
+
+        // find book to toggle status on
+        myLibrary.forEach((item) => {
+            if (item.title === title && item.author === author) {
+                item.toggleRead();
+
+                // update display on book
+                if (item.read) {
+                    parentDiv.childNodes[4].textContent = 'Status: Read';
+                } else {
+                    parentDiv.childNodes[4].textContent = 'Status: Not Read Yet';
+                }
+            }
+        });
+    })
+
+    parentDiv.appendChild(buttonRead);
 
     return parentDiv;
 }
