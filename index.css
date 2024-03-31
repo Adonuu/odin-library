@@ -60,7 +60,7 @@ body {
     margin: 10px;
     background-color: darkolivegreen;
     color: white;
-    border: none;
+    border-color: white;
     font-size: 1rem;
     border-radius: 10px;
 }
@@ -159,4 +159,8 @@ input:invalid {
     color: white;
     border-radius: 7px;
     border-color: white;
+}
+
+.readButton:hover {
+    background-color: darkolivegreen;
 }
