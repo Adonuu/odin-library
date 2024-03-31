@@ -212,6 +212,9 @@ document.querySelector('#bookForm').addEventListener("submit", (event) => {
     // append element to libraryContainer
     libraryContainer.append(newDiv);
 
+    // close dialog
+    document.querySelector('#BookEntry').close();
+
     event.preventDefault();
 });
 
