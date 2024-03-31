@@ -14,25 +14,25 @@
     </div>
     <div id="libraryContainer"></div>
     <dialog id="BookEntry">
-        <form action="POST" id="bookForm">
+        <form id="bookForm">
             <h2>Add Book</h2>
             <p id="closeForm">✕</p>
             <fieldset>
                 <div>
                     <label for="title">Title: </label>
-                    <input type="text" name="title" id="bookTitle">
+                    <input type="text" name="title" id="bookTitle" required>
                 </div>
                 <div>
                     <label for="author">Author: </label>
-                    <input type="text" name="author" id="bookAuthor">
+                    <input type="text" name="author" id="bookAuthor" required>
                 </div>
                 <div>
                     <label for="pages">Number of Pages: </label>
-                    <input type="number" name="pages" id="bookPages">
+                    <input type="number" name="pages" id="bookPages" required>
                 </div>
                 <div>
                     <label for="read">Have you read the book?</label>
-                    <select name="read" id="bookRead">
+                    <select name="read" id="bookRead" required>
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
                     </select>

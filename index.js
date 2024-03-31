@@ -113,7 +113,32 @@ document.querySelector('#addBook').addEventListener('click', () => {
 // event listener to close dialog when closeForm is clicked
 document.querySelector('#closeForm').addEventListener('click', () => {
     document.querySelector('#BookEntry').close();
-})
+});
+
+// event listener to create book when form is submitted
+document.querySelector('#bookForm').addEventListener("submit", (event) => {
+    
+    // grab form data
+    let title = document.querySelector('#bookTitle').value;
+    let author = document.querySelector('#bookAuthor').value;
+    let pages = document.querySelector('#bookPages').value;
+    let read = document.querySelector('#bookRead').value;
+
+    // create book with form data
+    let newBook = new Book(title, author, pages, read);
+
+    // add book to libaray
+    addBookToLibrary(newBook);
+
+    // create element for each book
+    let newDiv = bookDisplay(newBook);
+    // add a class to the new element for styling
+    newDiv.classList.add('book');
+    // append element to libraryContainer
+    libraryContainer.append(newDiv);
+
+    event.preventDefault();
+});
 
 // create sample books
 let theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);

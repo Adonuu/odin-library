@@ -32,7 +32,6 @@ body {
     padding: 10px;
     margin: 5px;
     border-radius: 7px;
-    height: 25%;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -124,6 +123,11 @@ fieldset > div > label {
 fieldset > div > input {
     width: 60%;
     margin-left: 5px;
+    border-radius: 7px;
+}
+
+fieldset > div > select {
+    border-radius: 7px;
 }
 
 fieldset > div {
@@ -136,4 +140,8 @@ fieldset > div {
     width: 50%;
     border-radius: 7px;
     border: none;
+}
+
+input:invalid {
+    border: 2px solid red;
 }
