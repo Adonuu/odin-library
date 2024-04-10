@@ -4,54 +4,70 @@ const myLibrary = [];
 // container where books are displayed
 const libraryContainer = document.querySelector('#libraryContainer');
 
-// constructor function to create a book
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+// book class
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 
-    this.info = () => {
+    get title () {
+        return this._title;
+    }
+
+    set title(value) {
+        if (typeof value == "string") {
+            this._title = value;
+        } else {
+            console.log('please pass in a string as title');
+        }
+    }
+
+    get author () {
+        return this._author;
+    }
+
+    set author(value) {
+        if (typeof value == "string") {
+            this._author = value;
+        } else {
+            console.log('please pass in a string as author');
+        }
+    }
+
+    get pages () {
+        return this._pages;
+    }
+
+    set pages(value) {
+        if (typeof value == "number") {
+            this._pages = value;
+        } else {
+            console.log('please pass in a number as pages');
+        }
+    }
+
+    get read () {
+        return this._read;
+    }
+
+    set read(value) {
+        if (typeof value == "boolean") {
+            this._read = value;
+        } else {
+            console.log('please pass in a boolean as read');
+        }
+    }
+
+    info() {
         if (this.read) {
             return this.title + " by " + this.author + ", " + this.pages + " pages, read this book";
         } else {
             return this.title + " by " + this.author + ", " + this.pages + " pages, not read yet";
         }
     }
-}
-
-// getter functions for the Book prototype
-Book.prototype.getTitle = function () {
-    return this.title;
-}
-
-Book.prototype.getAuthor = function () {
-    return this.author;
-}
-
-Book.prototype.getPages = function () {
-    return this.pages;
-}
-
-Book.prototype.getRead = function () {
-    return this.read;
-}
-
-// setter functions for the Book prototype
-Book.prototype.setTitle = function (title) {
-    this.title = title;
-}
-
-Book.prototype.getAuthor = function (author) {
-    this.author = author;
-}
-
-Book.prototype.getPages = function (pages) {
-    this.pages = pages;
-}
-
-Book.prototype.getRead = function (read) {
-    this.read = read;
 }
 
 
