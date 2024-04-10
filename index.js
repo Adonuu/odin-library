@@ -4,53 +4,69 @@ const myLibrary = [];
 // container where books are displayed
 const libraryContainer = document.querySelector('#libraryContainer');
 
-// constructor function to create a book
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
+// book class
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 
-// getter functions for the Book prototype
-Book.prototype.getTitle = function () {
-    return this.title;
-}
+    get title () {
+        return this._title;
+    }
 
-Book.prototype.getAuthor = function () {
-    return this.author;
-}
+    set title(value) {
+        if (typeof value == "string") {
+            this._title = value;
+        } else {
+            console.log('please pass in a string as title');
+        }
+    }
 
-Book.prototype.getPages = function () {
-    return this.pages;
-}
+    get author () {
+        return this._author;
+    }
 
-Book.prototype.getRead = function () {
-    return this.read;
-}
+    set author(value) {
+        if (typeof value == "string") {
+            this._author = value;
+        } else {
+            console.log('please pass in a string as author');
+        }
+    }
 
-// setter functions for the Book prototype
-Book.prototype.setTitle = function (title) {
-    this.title = title;
-}
+    get pages () {
+        return this._pages;
+    }
 
-Book.prototype.setAuthor = function (author) {
-    this.author = author;
-}
+    set pages(value) {
+        if (typeof value == "number") {
+            this._pages = value;
+        } else {
+            console.log('please pass in a number as pages');
+        }
+    }
 
-Book.prototype.setPages = function (pages) {
-    this.pages = pages;
-}
+    get read () {
+        return this._read;
+    }
 
-Book.prototype.setRead = function (read) {
-    this.read = read;
-}
+    set read(value) {
+        if (typeof value == "boolean") {
+            this._read = value;
+        } else {
+            console.log('please pass in a boolean as read');
+        }
+    }
 
-Book.prototype.toggleRead = function () {
-    if (this.read) {
-        this.read = false;
-    } else {
-        this.read = true;
+    info() {
+        if (this.read) {
+            return this.title + " by " + this.author + ", " + this.pages + " pages, read this book";
+        } else {
+            return this.title + " by " + this.author + ", " + this.pages + " pages, not read yet";
+        }
     }
 }
 
